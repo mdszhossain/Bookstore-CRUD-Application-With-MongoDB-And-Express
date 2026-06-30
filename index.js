@@ -68,4 +68,7 @@ app.delete("/books/:id", async(req, res) => {
 });
 
 // server listen setup
-app.listen(8080, () => {console.log("server listening")});
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
