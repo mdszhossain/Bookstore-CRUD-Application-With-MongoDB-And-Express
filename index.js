@@ -19,6 +19,15 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/Bookstore');
 }
 
+// This catches requests to the home page
+app.get('/', (req, res) => {
+    // Redirect them to your actual working page:
+    res.redirect('/books'); 
+    
+    // OR, you can render a simple welcome page instead:
+    // res.send('Welcome to the Bookstore App!'); 
+});
+
 // index route
 app.get("/books", async (req, res) => {
   let books = await Book.find({});
