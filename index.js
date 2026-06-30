@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const path = require("path");
+const Book = require("./models/book");
 const methodOverride = require("method-override");
 const app = express();
 
@@ -17,6 +18,12 @@ main().then(() => {console.log("MongoDB Connected")}).catch(err => console.log(e
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/Bookstore');
 }
+
+// index route
+app.get("/books", async (req, res) => {
+  let books = await Book.find({});
+  res.render("index.ejs", {books});
+});
 
 // server listen setup
 app.listen(8080, () => {console.log("server listening")});

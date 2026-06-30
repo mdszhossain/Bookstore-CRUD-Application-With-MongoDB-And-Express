@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="container">
+        <div class="top-bar">
+            <h1>All Books</h1>
+            <a href="/books/new" class="btn add-btn">Add New Book</a>
+        </div>
+
+        <section class="book-list">
+            <% for (let book of books) { %>
+                <article class="book-card">
+                    <div class="book-header">
+                        <h2><%= book.book_name %></h2>
+                        <span class="price">$<%= book.price %></span>
+                    </div>
+
+                    <p class="author"><strong>Author: <%= book.author_name %></strong></p>
+                    <p class="genre"><strong>Genre: <%= book.genre %></strong></p>
+                    <p class="description"><%= book.description %></p>
+
+                    <div class="book-actions">
+                        <a href="/books/<%= book._id %>/edit" class="btn edit-btn">Edit</a>
+                        <form action="/books/<%= book._id %>?_method=DELETE" method="POST" class="delete-form">
+                            <button type="submit" class="btn delete-btn">Delete</button>
+                        </form>
+                    </div>
+                </article>
+            <% } %>
+        </section>
+    </main>
+</body>
+</html>
