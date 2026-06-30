@@ -44,5 +44,21 @@ app.get("/books/view/:id", async(req, res) => {
   res.render("view.ejs", {book});
 });
 
+// edit route
+app.get("/books/:id/edit", async(req, res) => {
+  let {id} = req.params;
+  let book = await Book.findOne({_id: id});
+  // res.send("working");
+  res.render("edit.ejs", {book});
+});
+
+// update route
+app.patch("/books/:id", async(req, res) => {
+  let {id} = req.params;
+  let {book_name: newBookName, author_name: newAuthorName, genre: newGenre, price: newPrice, description: newDescription} = req.body;
+  let updation = await Book.findByIdAndUpdate(`${id}`, {book_name: newBookName, author_name: newAuthorName, genre: newGenre, price: newPrice, description: newDescription});
+  res.redirect("/books");
+});
+
 // server listen setup
 app.listen(8080, () => {console.log("server listening")});

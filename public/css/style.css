@@ -207,7 +207,8 @@ body {
     padding: 40px 20px;
 }
 
-.form-card {
+.form-card,
+.edit-card {
     width: min(520px, 100%);
     background: #ffffff;
     padding: 32px;
@@ -215,7 +216,8 @@ body {
     box-shadow: 0 12px 30px rgba(45, 55, 72, 0.12);
 }
 
-.form-card h2 {
+.form-card h2,
+.edit-card h2 {
     margin-top: 0;
     margin-bottom: 24px;
     text-align: center;

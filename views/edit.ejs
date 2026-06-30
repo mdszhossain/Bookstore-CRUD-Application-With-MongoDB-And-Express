@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="form-page">
+        <div class="form-card edit-card">
+            <h2>Edit Book</h2>
+
+            <form action="/books/<%= book._id %>?_method=PATCH" method="POST" class="book-form">
+                <div class="form-group">
+                    <label for="book_name">Book Name</label>
+                    <input type="text" id="book_name" name="book_name" value="<%= book.book_name %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author_name">Author Name</label>
+                    <input type="text" id="author_name" name="author_name" value="<%= book.author_name %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <input type="text" id="genre" name="genre" value="<%= book.genre %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0" value="<%= book.price %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="5" required><%= book.description %></textarea>
+                </div>
+
+                <button type="submit" class="btn submit-btn">Update Book</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
