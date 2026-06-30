@@ -25,5 +25,24 @@ app.get("/books", async (req, res) => {
   res.render("index.ejs", {books});
 });
 
+// new route
+app.get("/books/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+// create route
+app.post("/books", (req, res) => {
+  let {book_name, author_name, genre, price, description} = req.body;
+  let result = Book.insertOne({book_name: book_name, author_name: author_name, genre: genre, price: price, description: description});
+  res.redirect("/books");
+});
+
+// view route
+app.get("/books/view/:id", async(req, res) => {
+  let {id} = req.params;
+  let book = await Book.findOne({_id: id});
+  res.render("view.ejs", {book});
+});
+
 // server listen setup
 app.listen(8080, () => {console.log("server listening")});
