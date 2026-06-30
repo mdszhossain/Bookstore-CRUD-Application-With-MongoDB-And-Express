@@ -60,5 +60,12 @@ app.patch("/books/:id", async(req, res) => {
   res.redirect("/books");
 });
 
+// destroy route
+app.delete("/books/:id", async(req, res) => {
+    let {id} = req.params;
+    let book = await Book.deleteOne({_id: id});
+    res.redirect("/books");
+});
+
 // server listen setup
 app.listen(8080, () => {console.log("server listening")});
